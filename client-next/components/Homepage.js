@@ -155,7 +155,7 @@ export default function Example() {
           </h1>
 
           <p class="mx-auto mt-4 max-w-xl sm:text-xl sm:leading-relaxed text-black">
-            We handle your finances
+            Let us handle your finances
           </p>
 
           <div class="mt-8 flex flex-wrap justify-center gap-4">
