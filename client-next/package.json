@@ -11,8 +11,10 @@
   "dependencies": {
     "@headlessui/react": "^1.7.7",
     "@heroicons/react": "^2.0.13",
+    "@mdi/js": "^7.1.96",
     "@next/font": "13.1.4",
     "next": "13.1.4",
+    "next-auth": "^4.18.8",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
