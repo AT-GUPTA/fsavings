@@ -25,7 +25,7 @@ public class OnboardingController {
     ResponseEntity<?> checkUser(@PathVariable String email){
         try{
             LOGGER.debug("OnboardingController: checkUser -- Begin");
-            Boolean result = onboardingService.checkUser(email);
+            Long result = onboardingService.checkUser(email);
             LOGGER.debug("OnboardingController: checkUser -- Begin");
             return ResponseEntity.ok(result);
         }
@@ -36,8 +36,10 @@ public class OnboardingController {
     }
     @RequestMapping(value= URI.SAVE_USER_INFO,method= RequestMethod.POST)
     ResponseEntity<?> saveUser(@PathVariable String email, @RequestBody String jsonDetails){
+
         try {
             JSONObject userInfo = new JSONObject(jsonDetails);
+
             UserEntity user = new UserEntity(
                     userInfo.getLong("id"),
                     userInfo.getString("userName"),
@@ -49,7 +51,7 @@ public class OnboardingController {
                     userInfo.getLong("risk"),
                     userInfo.getBoolean("isIncrease"),
                     userInfo.getString("subject"),
-                    userInfo.getBoolean("isInvestmentAdvice")
+                    userInfo.getBoolean("isInvestmentAdvice"),
                     );
             onboardingService.saveUser(user);
             return null;
