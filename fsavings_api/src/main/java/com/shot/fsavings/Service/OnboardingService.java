@@ -15,5 +15,6 @@ public class OnboardingService {
     }
 
     public void saveUser(UserEntity user) {
+        onboardingDao.saveUser(user);
     }
 }
