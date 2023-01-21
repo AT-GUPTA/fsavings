@@ -10,7 +10,7 @@ public class OnboardingService {
 
     @Autowired
     private OnboardingDao onboardingDao;
-    public Boolean checkUser(String email) {
+    public Long checkUser(String email) {
         return onboardingDao.checkUser(email);
     }
 
