@@ -32,9 +32,10 @@ public class GoalDao {
 
     public void saveGoal(GoalEntity goal) {
         try {
-            List<Long> idList = entityManager.createQuery("SELECT goal FROM GoalEntity goal", GoalEntity.class)
-                    .getResultList().stream().map(GoalEntity::getId).toList();
-            if (idList.contains(goal.getId())) {
+            List<GoalEntity> allGoals = entityManager.createQuery("SELECT goal FROM GoalEntity goal where goal.userId=:id", GoalEntity.class)
+                    .setParameter("id",goal.getUserId())
+                    .getResultList();
+            if (!allGoals.isEmpty()) {
                 entityManager.merge(goal);
             } else {
                 entityManager.persist(goal);

@@ -15,7 +15,7 @@ import lombok.Setter;
 public class GoalEntity {
     @Id
     @Column
-    private Long id;
+    private Long userId;
 
     @Column
     private Long savings;

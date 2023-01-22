@@ -20,7 +20,7 @@ public class GoalService {
     @Autowired
     private OnboardingService onboardingService;
 
-    public void generateGoal(String id) {
+    public JSONObject generateGoal(String id) {
         Long percentageTotal = 0L;
         try {
             LOGGER.debug("GoalService: generateGoal -- Begin");
@@ -60,14 +60,19 @@ public class GoalService {
             }
 
             percentageTotal = wants + needs + savingsPercentage;
+            if(percentageTotal!=100)
+                LOGGER.debug("GoalService: generateGoal -- Error" +
+                        "\n Total Percentage for (needs, wants, savings) = " + percentageTotal);
 
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("savings", savingsPercentage);
             jsonObject.put("wants", wants);
             jsonObject.put("needs", needs);
+            return jsonObject;
         } catch (Exception e) {
             LOGGER.debug("GoalService: generateGoal -- Error" +
                     "\n Total Percentage for (needs, wants, savings) = " + percentageTotal);
+            return null;
         }
     }
 

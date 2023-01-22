@@ -34,10 +34,10 @@ public class DashboardController {
     }
 
     @RequestMapping(value = URI.UPDATE_GOAL_INFO, method = RequestMethod.POST)
-    ResponseEntity<?> generateGoal(@PathVariable String id) {
+    ResponseEntity<?> generateGoal(@PathVariable String userId) {
         try {
-            goalService.generateGoal(id);
-            return ResponseEntity.ok(id);
+            goalService.generateGoal(userId);
+            return ResponseEntity.ok(userId);
         } catch (Exception e) {
             LOGGER.debug("DashboardController: updateGoal -- Error");
             return ResponseEntity.badRequest().body("FAILURE");
