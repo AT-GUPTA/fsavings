@@ -1,29 +1,29 @@
 import {
-     mdiAccountMultiple,
-     mdiCartOutline,
-     mdiChartPie,
-     mdiChartTimelineVariant,
-     mdiGithub,
-     mdiMonitorCellphone,
-     mdiReload
+  mdiAccountMultiple,
+  mdiCartOutline,
+  mdiChartPie,
+  mdiChartTimelineVariant,
+  mdiGithub,
+  mdiMonitorCellphone,
+  mdiReload
 } from '@mdi/js'
 import Head from 'next/head'
 import { useState } from 'react'
-import BaseButton from '../components/BaseButton'
-import CardBox from '../components/CardBox'
-import CardBoxClient from '../components/CardBoxClient'
-import CardBoxTransaction from '../components/CardBoxTransaction'
-import CardBoxWidget from '../components/CardBoxWidget'
-import ChartLineSample from '../components/ChartLineSample'
-import { sampleChartData } from '../components/ChartLineSample/config'
-import NotificationBar from '../components/NotificationBar'
-import SectionBannerStarOnGitHub from '../components/SectionBannerStarOnGitHub'
-import SectionMain from '../components/SectionMain'
-import SectionTitleLineWithButton from '../components/SectionTitleLineWithButton'
-import TableSampleClients from '../components/TableSampleClients'
-import { getPageTitle } from '../config'
-import { useSampleClients, useSampleTransactions } from '../hooks/sampleData'
-import LayoutAuthenticated from '../layouts/Authenticated'
+import BaseButton from '../../components/BaseButton'
+import CardBox from '../../components/CardBox'
+import CardBoxClient from '../../components/CardBoxClient'
+import CardBoxTransaction from '../../components/CardBoxTransaction'
+import CardBoxWidget from '../../components/CardBoxWidget'
+import ChartLineSample from '../../components/ChartLineSample'
+import { sampleChartData } from '../../components/ChartLineSample/config'
+import NotificationBar from '../../components/NotificationBar'
+import SectionBannerStarOnGitHub from '../../components/SectionBannerStarOnGitHub'
+import SectionMain from '../../components/SectionMain'
+import SectionTitleLineWithButton from '../../components/SectionTitleLineWithButton'
+import TableSampleClients from '../../components/TableSampleClients'
+import { getPageTitle } from '../../config'
+import { useSampleClients, useSampleTransactions } from '../../hooks/sampleData'
+import LayoutAuthenticated from '../../layouts/Authenticated'
    
    const Dashboard = () => {
      const { clients } = useSampleClients()
@@ -44,7 +44,7 @@ import LayoutAuthenticated from '../layouts/Authenticated'
          <Head>
            <title>{getPageTitle('Dashboard')}</title>
          </Head>
-         <SectionMain>
+         <SectionMain className="bg-white">
            <SectionTitleLineWithButton icon={mdiChartTimelineVariant} title="Overview" main>
              <BaseButton
                href="https://github.com/justboil/admin-one-react-tailwind"
