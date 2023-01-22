@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import HomeHeader from "./HomeHeader";
+import HomeHeader from "../HomeHeader";
 import "./HomePage.css";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
