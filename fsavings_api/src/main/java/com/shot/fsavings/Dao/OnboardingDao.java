@@ -19,13 +19,12 @@ public class OnboardingDao {
     private EntityManager entityManager;
 
     public Long checkUser(String email) {
-        try {
-            Long userid = entityManager.createQuery("select user from UserEntity user where user.email=:email", UserEntity.class)
-                    .setParameter("email", email)
+        try{
+            return entityManager.createQuery("select user from UserEntity user where user.email=:email", UserEntity.class)
+                    .setParameter("email",email)
                     .getSingleResult().getId();
-            return userid;
-        } catch (Exception e) {
-            LOGGER.info("OnboardingDao: checkUser -- Error");
+        }
+        catch (Exception e){
             return 0L;
         }
     }
@@ -80,12 +79,12 @@ public class OnboardingDao {
                         " investmentAdvice, expectedEarnings, expectedSavings, expectedInvestment"};
 
                 String SqlQuery = "UPDATE TABLE UserEntity SET ";
-                for (int i = 0; i < arr.length; i++) {
-                    if (userInfo.get(arr[i]) != null) {
-                        SqlQuery += arr[i] + "=" + userInfo.get(arr[i]) + " ";
+                for (String s : arr) {
+                    if (userInfo.get(s) != null) {
+                        SqlQuery += s + "=" + userInfo.get(s) + " ";
                     }
                 }
-                SqlQuery.trim();
+                SqlQuery=SqlQuery.trim();
                 entityManager.createQuery(SqlQuery);
                 entityManager.merge(user);
 

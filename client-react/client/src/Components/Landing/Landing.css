@@ -1,0 +1,45 @@
+#landing-background-image {
+	z-index: -1;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	opacity: 0.4;
+	background-image: url("/src/Resources/landing.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+}
+
+#linked-in {
+	text-decoration: none;
+	color: #0077b5;
+}
+
+.head {
+	background: -webkit-linear-gradient(180deg, #e100ff, #4400ff);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.head-2 {
+	background: -webkit-linear-gradient(180deg, #ffa600, #ff8800);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.btn-link {
+	background: none;
+	border: none;
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
+}
+
+.navbar-text {
+	color: white;
+	background-color: #1d1d1d;
+	width: 100%;
+	margin: 0%;
+	padding: 0%;
+}
