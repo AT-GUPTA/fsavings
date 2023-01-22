@@ -1,0 +1,29 @@
+#home-background-image {
+	z-index: -1;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	opacity: 0.5;
+	background-image: url("/src/Resources/homepage.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+}
+
+.note-window {
+	height: 100%;
+}
+
+.text-area-background {
+	background-color: rgba(255, 255, 255, 0.5);
+	color: rgb(0, 0, 0);
+}
+
+.text-area-view:hover {
+	caret-color: transparent;
+}
+
+.border-right {
+	border-right: 1px solid black;
+}
