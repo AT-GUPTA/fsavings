@@ -3,6 +3,7 @@ package com.shot.fsavings.Controller;
 import com.shot.fsavings.Common.URI;
 import com.shot.fsavings.Entity.UserEntity;
 import com.shot.fsavings.Service.OnboardingService;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,17 @@ public class OnboardingController {
             LOGGER.info("User: " + user);
             onboardingService.saveUser(user);
             return ResponseEntity.ok(user);
+        } catch (Exception e) {
+            LOGGER.debug("OnboardingController: saveUser -- Error");
+            return ResponseEntity.badRequest().body("FAILURE");
+        }
+    }
+
+    @RequestMapping(value = URI.UPDATE_USER_INFO, method = RequestMethod.POST)
+    ResponseEntity<?> updateUser(@PathVariable String id, @RequestBody JSONObject userInfo) {
+        try {
+            onboardingService.updateUser(id, userInfo);
+            return ResponseEntity.ok(userInfo);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("FAILURE");
         }
