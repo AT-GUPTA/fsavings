@@ -20,43 +20,30 @@ public class UserEntity {
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column
     private String userName;
-
     @Column
     private String email;
-
     @Column
     private String firstName;
-
     @Column
     private String lastName;
-
     @Column
     private Date dateOfBirth;
-
     @Column
     private String profession;
-
     @Column
     private Long risk; //1-No, 2-Low, 3-Medium
-
     @Column
     private Boolean isIncrease;
-
     @Column
     private String subject; //savings, expenses, investment
-
     @Column
     private Boolean investmentAdvice;
-
     @Column
     private Long expectedEarnings;
-
     @Column
     private Long expectedSavings;
-
     @Column
     private Long expectedInvestment;
 }

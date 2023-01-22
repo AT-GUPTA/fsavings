@@ -9,4 +9,6 @@ public interface URI {
     String ADD_ALL_TRANSACTION = "/get-transaction-from-csv";
     String USER_TRANSACTION = "/{userId}/user-transaction-id";
     String GET_USER = "/{userId}/user";
+    String SAVE_GOAL_INFO="/save-goal-info";
+    String UPDATE_GOAL_INFO="/{userId}/update-goal-info";
 }
