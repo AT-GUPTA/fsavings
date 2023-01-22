@@ -6,6 +6,7 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -24,10 +25,12 @@ public class TransactionsDao {
         return entityManager.createQuery(criteriaQuery).getResultList();
     }
 
+    @Transactional
     public void addTransaction(TransactionsEntity transaction) {
         entityManager.persist(transaction);
     }
 
+    @Transactional
     public void addAllTransactions(List<TransactionsEntity> transactions) {
         transactions.forEach(transaction -> {
             entityManager.persist(transaction);

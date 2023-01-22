@@ -26,12 +26,20 @@ const Dashboard = () => {
 	}, [id]);
 
 	const fetchChartData = async (id) => {
+		const res = await fetch(`http://localhost:8080/` + id + `/user-transaction-id`, {
+			method: "GET",
+			headers: { "Content-type": "application/json" },
+		});
+		const jsonMessage = await res.json();
+		return JSON.parse(JSON.stringify(jsonMessage));
+	};
+
+	const fetchTransactions = async (id) => {
 		const res = await fetch(`http://localhost:8080/` + id + `/cash-flow`, {
 			method: "GET",
 			headers: { "Content-type": "application/json" },
 		});
 		const jsonMessage = await res.json();
-		console.log(JSON.parse(JSON.stringify(jsonMessage)));
 		return JSON.parse(JSON.stringify(jsonMessage));
 	};
 
@@ -49,7 +57,7 @@ const Dashboard = () => {
 								<li className="nav-item px-0 py-4">
 									<a className="nav-link active p-0" aria-current="page" href="#">
 										<span className="navbar-brand">
-											<img src="logo.png" alt="" style={{ height: "70px" }} />
+											<img src="logo.png" alt="" style={{ height: "50px" }} />
 										</span>
 										<span className="text-decoration-none fw-bold h4 m-0 p-0" id="company-name">
 											f$AVINGS
@@ -57,41 +65,41 @@ const Dashboard = () => {
 									</a>
 								</li>
 
-								<li className="nav-item px-0 py-4">
-									<Link to="/suggestions" className="nav-link link">
-										<i className="bi bi-graph-up h4"> </i>
+								<li className="nav-item px-0 py-2">
+									<Link to="/suggestions" className="nav-link link p-0 m-0">
+										<i className="bi bi-graph-up h6"> </i>
 										<span className="fw-bold m-0 p-0 h4 text-dark"> Dashboard</span>
 									</Link>
 								</li>
 
-								<li className="nav-item px-0 py-4">
-									<Link to="/suggestions" className="nav-link link">
-										<i className="bi bi-cash-coin h4"> </i>
+								<li className="nav-item px-0 py-2">
+									<Link to="/suggestions" className="nav-link link p-0 m-0">
+										<i className="bi bi-cash-coin h6"> </i>
 										<span className="fw-bold m-0 p-0 h4 text-dark"> Transactions</span>
 									</Link>
 								</li>
-								<li className="nav-item px-0 py-4">
-									<Link to="/suggestions" className="nav-link link">
-										<i className="bi bi-file-bar-graph h4"> </i>
+								<li className="nav-item px-0 py-2">
+									<Link to="/suggestions" className="nav-link link p-0 m-0">
+										<i className="bi bi-file-bar-graph h6"> </i>
 										<span className="fw-bold m-0 p-0 h4 text-dark"> Reports</span>
 									</Link>
 								</li>
-								<li className="nav-item px-0 py-4">
-									<Link to="/suggestions" className="nav-link link">
-										<i className="bi bi-trophy h4"> </i>
+								<li className="nav-item px-0 py-2">
+									<Link to="/suggestions" className="nav-link link p-0 m-0">
+										<i className="bi bi-trophy h6"> </i>
 										<span className="fw-bold m-0 p-0 h4 text-dark"> Goals</span>
 									</Link>
 								</li>
-								<li className="nav-item px-0 py-4">
-									<Link to="/suggestions" className="nav-link link">
-										<i className="bi bi-sliders h4"> </i>
+								<li className="nav-item px-0 py-2">
+									<Link to="/suggestions" className="nav-link link p-0 m-0">
+										<i className="bi bi-sliders h6"> </i>
 										<span className="fw-bold m-0 p-0 h4 text-dark"> Settings</span>
 									</Link>
 								</li>
 
 								<li className="nav-item px-0 py-4">
-									<Link to="/suggestions" className="nav-link link">
-										<i className="bi bi-box-arrow-right h4"></i>
+									<Link to="/suggestions" className="nav-link link p-0 m-0">
+										<i className="bi bi-box-arrow-right h6"></i>
 										<span className="fw-bold m-0 p-0 h4 text-dark"> Logout</span>
 									</Link>
 								</li>

@@ -3,6 +3,7 @@ package com.shot.fsavings.Dao;
 import com.shot.fsavings.Entity.UserEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +30,7 @@ public class OnboardingDao {
         }
     }
 
+    @Transactional
     public void saveUser(UserEntity user) {
         try {
             Long userId = checkUser(user.getEmail());

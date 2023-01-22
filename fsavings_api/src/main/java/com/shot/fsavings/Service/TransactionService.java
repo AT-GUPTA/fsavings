@@ -3,6 +3,7 @@ package com.shot.fsavings.Service;
 import com.shot.fsavings.Common.LoggingInfo;
 import com.shot.fsavings.Dao.TransactionsDao;
 import com.shot.fsavings.Entity.TransactionsEntity;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,7 @@ public class TransactionService implements LoggingInfo {
     @Autowired
     TransactionsDao transactionsDao;
 
+    @Transactional
     public void addTransaction(TransactionsEntity transaction) {
         transactionsDao.addTransaction(transaction);
     }
@@ -30,6 +32,7 @@ public class TransactionService implements LoggingInfo {
         return transactionsDao.getAllTransactions(id);
     }
 
+    @Transactional
     public ResponseEntity<?> addAllTransactions(MultipartFile file) {
         String message = "";
         if (hasCSVFormat(file)) {

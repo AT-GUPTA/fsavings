@@ -3,6 +3,7 @@ package com.shot.fsavings.Controller;
 import com.shot.fsavings.Common.URI;
 import com.shot.fsavings.Entity.TransactionsEntity;
 import com.shot.fsavings.Service.TransactionService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
+@Transactional
 public class TransactionsController {
 
     @Autowired
@@ -42,7 +44,7 @@ public class TransactionsController {
         try {
             return ResponseEntity.ok(transactionService.getAllTransactions(id));
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("FAILURE");
+            return ResponseEntity.ok("{\"message\": \"FAILURE\"}");
         }
     }
 }

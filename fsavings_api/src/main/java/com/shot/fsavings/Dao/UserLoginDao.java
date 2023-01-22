@@ -42,19 +42,19 @@ public class UserLoginDao {
                         .equals(user1.getUsername()));
 
         if (emailInList && usernameInList)
-            return getMessage("Username and Email Id already exists");
+            return getMessage("message","Username and Email Id already exists");
         else if (usernameInList)
-            return getMessage("Username already exists");
+            return getMessage("message","Username already exists");
         else if (emailInList)
-            return getMessage("Email already exists");
+            return getMessage("message","Email already exists");
         else
             entityManager.merge(user);
 
-        return getMessage("Account created!");
+        return getMessage("message","Account created!");
     }
 
-    private static String getMessage(String message) {
-        return String.format("{\"message\":\"%s\"}", message);
+    private static String getMessage(String key, String message) {
+        return String.format("{\"%s\":\"%s\"}", key, message);
     }
 
     public List<UserLoginEntity> findAll() {
