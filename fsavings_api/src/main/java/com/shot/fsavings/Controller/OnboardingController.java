@@ -46,10 +46,18 @@ public class OnboardingController {
     }
 
     @RequestMapping(value = URI.UPDATE_USER_INFO, method = RequestMethod.POST)
-    ResponseEntity<?> updateUser(@PathVariable String id, @RequestBody JSONObject userInfo) {
+    ResponseEntity<?> updateUser(@PathVariable String userId, @RequestBody JSONObject userInfo) {
         try {
-            onboardingService.updateUser(id, userInfo);
+            onboardingService.updateUser(userId, userInfo);
             return ResponseEntity.ok(userInfo);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("FAILURE");
+        }
+    }
+    @RequestMapping(value=URI.GET_USER, method = RequestMethod.GET)
+    ResponseEntity<?> getUser(@PathVariable String userId) {
+        try {
+            return ResponseEntity.ok(onboardingService.getUser(Long.valueOf(userId)));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("FAILURE");
         }

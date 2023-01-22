@@ -79,12 +79,12 @@ public class OnboardingDao {
                         " investmentAdvice, expectedEarnings, expectedSavings, expectedInvestment"};
 
                 String SqlQuery = "UPDATE TABLE UserEntity SET ";
-                for (int i = 0; i < arr.length; i++) {
-                    if (userInfo.get(arr[i]) != null) {
-                        SqlQuery += arr[i] + "=" + userInfo.get(arr[i]) + " ";
+                for (String s : arr) {
+                    if (userInfo.get(s) != null) {
+                        SqlQuery += s + "=" + userInfo.get(s) + " ";
                     }
                 }
-                SqlQuery.trim();
+                SqlQuery=SqlQuery.trim();
                 entityManager.createQuery(SqlQuery);
                 entityManager.merge(user);
 
