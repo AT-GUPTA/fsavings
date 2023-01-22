@@ -57,6 +57,12 @@ public class ReportsService {
             } else if (transaction.getDebit()!=null && transaction.getCredit()==null) {
                 curReport.getDebitTransactions().add(transaction);
             }
+            curReport.getCreditTransactions().sort(Comparator.comparing(TransactionsEntity::getDateOfTransaction));
+            Collections.reverse(curReport.getCreditTransactions());
+
+            curReport.getDebitTransactions().sort(Comparator.comparing(TransactionsEntity::getDateOfTransaction));
+            Collections.reverse(curReport.getDebitTransactions());
+
             allReports.put(reportName,curReport);
         }
         for(Reports rep:allReports.values())
@@ -90,5 +96,10 @@ public class ReportsService {
             cashFlow.setNetAmount(earnings-expenses);
 
             return cashFlow;
+    }
+
+    public Double getExpenseOpt() {
+        //to pull changes from remote/ad-9kwerkpo0/ydteXZmmZp%
+        return (10.0/14);
     }
 }

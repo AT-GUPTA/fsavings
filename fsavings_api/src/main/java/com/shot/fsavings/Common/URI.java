@@ -11,4 +11,6 @@ public interface URI {
     String GET_USER = "/{userId}/user";
     String SAVE_GOAL_INFO="/save-goal-info";
     String UPDATE_GOAL_INFO="/{userId}/update-goal-info";
+    String GET_GOAL = "/{userId}/goals";
+    String GET_DASH_CONTENT = "/{userId}/cash-flow";
 }
