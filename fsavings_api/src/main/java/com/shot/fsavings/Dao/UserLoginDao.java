@@ -25,8 +25,8 @@ public class UserLoginDao {
                         email),
                 builder.equal(root.get("password"), password)));
         List<UserLoginEntity> user = entityManager.createQuery(query).getResultList();
-        String username = user.isEmpty() ? "" : user.get(0).getUsername();
-        return getMessage(username);
+        String emailId = user.isEmpty() ? "" : user.get(0).getEmail();
+        return getMessage(emailId);
     }
 
     public String addUser(UserLoginEntity user) {

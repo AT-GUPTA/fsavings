@@ -25,9 +25,9 @@ const Form = ({ authentication }) => {
 				title: "Login Success!",
 				text: "Hello " + message,
 				icon: "success",
-				confirmButtonText: "Write Notes!",
+				confirmButtonText: "Plan Your Finance!",
 			}).then((result) => {
-				localStorage.setItem("username", JSON.stringify(message));
+				localStorage.setItem("id", JSON.stringify(message));
 				if (result.isConfirmed) {
 					navigate("/home");
 				}

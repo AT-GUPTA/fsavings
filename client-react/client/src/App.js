@@ -7,6 +7,7 @@ import ReleaseNotes from "./Components/ExtraPages/ReleaseNotes";
 import Credits from "./Components/ExtraPages/Credits";
 import HomePage from "./Components/Home/HomePage";
 import { useState } from "react";
+import Dashboard from "./Components/Dashboard/Dashboard";
 
 function App() {
 	const [isAuth, setIsAuth] = useState(() => {
@@ -22,13 +23,18 @@ function App() {
 		<div>
 			<BrowserRouter>
 				<Routes>
-					<Route exact path="/" element={ <Navigate to="/login" />} />
+					<Route exact path="/" element={<Navigate to="/login" />} />
 					<Route exact path="/login" element={<Login authentication={allowAuth} />} />
 					<Route exact path="/signup" element={<Signup />} />
 					<Route exact path="/suggestions" element={<Suggestions />} />
 					<Route exact path="/release-notes" element={<ReleaseNotes />} />
 					<Route exact path="/credits" element={<Credits />} />
-					<Route exact path="/home" element={isAuth ? <HomePage /> : <Navigate to="/login" />} />
+					<Route exact path="/home" element={isAuth ? <HomePage /> : <Navigate to="/Login" />} />
+					<Route
+						exact
+						path="/dashboard"
+						element={isAuth ? <Dashboard /> : <Navigate to="/Login" />}
+					/>
 				</Routes>
 			</BrowserRouter>
 		</div>

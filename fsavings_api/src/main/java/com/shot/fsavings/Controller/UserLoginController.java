@@ -1,8 +1,10 @@
 package com.shot.fsavings.Controller;
 
 import com.shot.fsavings.Entity.UserLoginEntity;
+import com.shot.fsavings.Service.OnboardingService;
 import com.shot.fsavings.Service.UserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,18 +15,30 @@ public class UserLoginController {
     @Autowired
     private UserLoginService userLoginService;
 
+    @Autowired
+    private OnboardingService onboardingService;
+
     //Login user by id
     @CrossOrigin
     @RequestMapping(method = RequestMethod.POST, value = "/user/login")
-    public String getUser(@RequestBody Map<String, String> json) {
-        return userLoginService.checkUserLogin(json.get("email"), json.get("password"));
+    public ResponseEntity<?> getUser(@RequestBody Map<String, String> json) {
+        try {
+            String s = userLoginService.checkUserLogin(json.get("email"), json.get("password"));
+            return ResponseEntity.ok(onboardingService.checkUser(s));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("FAILURE");
+        }
     }
 
     //Add a new user
     @CrossOrigin
     @RequestMapping(method = RequestMethod.POST, value = "/users")
-    public String addUser(@RequestBody UserLoginEntity user) {
-        return userLoginService.addUser(user);
+    public ResponseEntity<?> addUser(@RequestBody UserLoginEntity user) {
+        try {
+            return ResponseEntity.ok(userLoginService.addUser(user));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("FAILURE");
+        }
     }
 
     //Get all the users
