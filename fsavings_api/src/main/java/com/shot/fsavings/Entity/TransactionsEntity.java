@@ -11,18 +11,27 @@ import java.util.Date;
 
 @Getter
 @Setter
-public class TransactionEntity {
+public class TransactionsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long transactionId;
     @Column
     private String transactionDescription;
     @Column
-    private Double credit;
+    private Long credit;
     @Column
-    private Double debit;
+    private Long debit;
     @Column
     private Date dateOfTransaction;
     @Column
     private String category;
+
+    public TransactionsEntity(String transactionDescription, Long credit, Long debit,
+                       Date dateOfTransaction, String category) {
+        this.transactionDescription = transactionDescription;
+        this.credit = credit;
+        this.debit = debit;
+        this.dateOfTransaction = dateOfTransaction;
+        this.category = category;
+    }
 }

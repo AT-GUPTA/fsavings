@@ -1,5 +1,6 @@
 package com.shot.fsavings.Service;
 
+import com.shot.fsavings.Common.LoggingInfo;
 import com.shot.fsavings.Dao.OnboardingDao;
 import com.shot.fsavings.Entity.UserEntity;
 import org.json.JSONObject;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 
 @Service
-public class OnboardingService {
+public class OnboardingService implements LoggingInfo {
 
     @Autowired
     private OnboardingDao onboardingDao;

@@ -19,13 +19,12 @@ public class OnboardingDao {
     private EntityManager entityManager;
 
     public Long checkUser(String email) {
-        try {
-            Long userid = entityManager.createQuery("select user from UserEntity user where user.email=:email", UserEntity.class)
-                    .setParameter("email", email)
+        try{
+            return entityManager.createQuery("select user from UserEntity user where user.email=:email", UserEntity.class)
+                    .setParameter("email",email)
                     .getSingleResult().getId();
-            return userid;
-        } catch (Exception e) {
-            LOGGER.info("OnboardingDao: checkUser -- Error");
+        }
+        catch (Exception e){
             return 0L;
         }
     }
