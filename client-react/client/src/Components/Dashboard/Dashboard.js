@@ -27,10 +27,11 @@ const Dashboard = () => {
 
 	const fetchChartData = async (id) => {
 		const res = await fetch(`http://localhost:8080/` + id + `/cash-flow`, {
-			method: "POST",
+			method: "GET",
 			headers: { "Content-type": "application/json" },
 		});
 		const jsonMessage = await res.json();
+		console.log(JSON.parse(JSON.stringify(jsonMessage)));
 		return JSON.parse(JSON.stringify(jsonMessage));
 	};
 
@@ -58,39 +59,39 @@ const Dashboard = () => {
 
 								<li className="nav-item px-0 py-4">
 									<Link to="/suggestions" className="nav-link link">
-										<i class="bi bi-graph-up h4"> </i>
+										<i className="bi bi-graph-up h4"> </i>
 										<span className="fw-bold m-0 p-0 h4 text-dark"> Dashboard</span>
 									</Link>
 								</li>
 
 								<li className="nav-item px-0 py-4">
 									<Link to="/suggestions" className="nav-link link">
-										<i class="bi bi-cash-coin h4"> </i>
+										<i className="bi bi-cash-coin h4"> </i>
 										<span className="fw-bold m-0 p-0 h4 text-dark"> Transactions</span>
 									</Link>
 								</li>
 								<li className="nav-item px-0 py-4">
 									<Link to="/suggestions" className="nav-link link">
-										<i class="bi bi-file-bar-graph h4"> </i>
+										<i className="bi bi-file-bar-graph h4"> </i>
 										<span className="fw-bold m-0 p-0 h4 text-dark"> Reports</span>
 									</Link>
 								</li>
 								<li className="nav-item px-0 py-4">
 									<Link to="/suggestions" className="nav-link link">
-										<i class="bi bi-trophy h4"> </i>
+										<i className="bi bi-trophy h4"> </i>
 										<span className="fw-bold m-0 p-0 h4 text-dark"> Goals</span>
 									</Link>
 								</li>
 								<li className="nav-item px-0 py-4">
 									<Link to="/suggestions" className="nav-link link">
-										<i class="bi bi-sliders h4"> </i>
+										<i className="bi bi-sliders h4"> </i>
 										<span className="fw-bold m-0 p-0 h4 text-dark"> Settings</span>
 									</Link>
 								</li>
 
 								<li className="nav-item px-0 py-4">
 									<Link to="/suggestions" className="nav-link link">
-										<i class="bi bi-box-arrow-right h4"></i>
+										<i className="bi bi-box-arrow-right h4"></i>
 										<span className="fw-bold m-0 p-0 h4 text-dark"> Logout</span>
 									</Link>
 								</li>
@@ -99,12 +100,12 @@ const Dashboard = () => {
 					</nav>
 
 					<div className="col-md-9 ms-sm-auto col-lg-10 p-md-4 text-center">
-						<div class="row">
-							<div class="col-sm-6">
+						<div className="row">
+							<div className="col-sm-6">
 								<div className="row card m-3">
 									<div className="card-body text-dark">
 										<h3 className="card-title head">
-											Cash Flow <i class="bi bi-wallet2"></i>
+											Cash Flow <i className="bi bi-wallet2"></i>
 										</h3>
 										<h6 className="card-subtitle m-1 text-muted">
 											This chart compares your total cash flows i.e. Earnings vs Savings for the
@@ -121,11 +122,11 @@ const Dashboard = () => {
 									</div>
 								</div>
 							</div>
-							<div class="col-sm-6">
+							<div className="col-sm-6">
 								<div className="row card m-3">
 									<div className="card-body text-dark">
 										<h3 className="card-title head">
-											Goal Completion <i class="bi bi-calendar2-check"></i>
+											Goal Completion <i className="bi bi-calendar2-check"></i>
 										</h3>
 										<h6 className="card-subtitle m-1 text-muted">
 											This graph aims to provide you the current standing in terms of the provided
@@ -138,10 +139,10 @@ const Dashboard = () => {
 								</div>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-sm">col-sm</div>
-							<div class="col-sm">col-sm</div>
-							<div class="col-sm">col-sm</div>
+						<div className="row">
+							<div className="col-sm">col-sm</div>
+							<div className="col-sm">col-sm</div>
+							<div className="col-sm">col-sm</div>
 						</div>
 					</div>
 				</div>

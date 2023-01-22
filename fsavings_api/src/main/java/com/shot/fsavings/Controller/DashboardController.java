@@ -22,6 +22,7 @@ public class DashboardController {
     private GoalService goalService;
 
     //suggestions
+    @CrossOrigin
     @RequestMapping(value = URI.SAVE_GOAL_INFO, method = RequestMethod.POST)
     ResponseEntity<?> saveGoal(@RequestBody GoalEntity goal) {
         try {
@@ -33,6 +34,7 @@ public class DashboardController {
         }
     }
 
+    @CrossOrigin
     @RequestMapping(value = URI.UPDATE_GOAL_INFO, method = RequestMethod.POST)
     ResponseEntity<?> generateGoal(@PathVariable String userId) {
         try {
@@ -43,7 +45,9 @@ public class DashboardController {
             return ResponseEntity.badRequest().body("FAILURE");
         }
     }
+
     //cash flows
+    @CrossOrigin
     @RequestMapping(value = URI.GET_GOAL, method = RequestMethod.GET)
     ResponseEntity<?> getGoals(@PathVariable String userId) {
         try {
@@ -54,6 +58,7 @@ public class DashboardController {
         }
     }
 
+    @CrossOrigin
     @RequestMapping(value = URI.GET_DASH_CONTENT, method = RequestMethod.GET)
     ResponseEntity<?> getDashContent(@PathVariable String userId) {
         try {
@@ -63,6 +68,4 @@ public class DashboardController {
             return ResponseEntity.badRequest().body("FAILURE");
         }
     }
-
-
 }

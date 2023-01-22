@@ -45,6 +45,7 @@ public class OnboardingController {
         }
     }
 
+    @CrossOrigin
     @RequestMapping(value = URI.UPDATE_USER_INFO, method = RequestMethod.POST)
     ResponseEntity<?> updateUser(@PathVariable String userId, @RequestBody JSONObject userInfo) {
         try {
@@ -54,6 +55,7 @@ public class OnboardingController {
             return ResponseEntity.badRequest().body("FAILURE");
         }
     }
+    @CrossOrigin
     @RequestMapping(value=URI.GET_USER, method = RequestMethod.GET)
     ResponseEntity<?> getUser(@PathVariable String userId) {
         try {

@@ -16,20 +16,25 @@ const Form = ({ authentication }) => {
 		});
 
 		const jsonMessage = await res.json();
+		console.log(jsonMessage);
 		const jsonObj = JSON.parse(JSON.stringify(jsonMessage));
 		const message = jsonObj["message"];
-		const isLoggedIn = message !== "";
+		const isLoggedIn = message !== "FAILURE";
 		if (isLoggedIn) {
 			authentication(true);
 			Swal.fire({
 				title: "Login Success!",
-				text: "Hello " + message,
+				text: "Hello User",
 				icon: "success",
 				confirmButtonText: "Plan Your Finance!",
 			}).then((result) => {
-				localStorage.setItem("id", JSON.stringify(message));
 				if (result.isConfirmed) {
-					navigate("/home");
+					if (message == 0) {
+						navigate("/portfolio");
+					} else {
+						localStorage.setItem("id", JSON.stringify(message));
+						navigate("/dashboard");
+					}
 				}
 			});
 		} else {

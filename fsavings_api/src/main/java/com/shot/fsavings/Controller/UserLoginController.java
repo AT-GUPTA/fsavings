@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
+
 @RestController
 public class UserLoginController {
     @Autowired
@@ -24,9 +25,11 @@ public class UserLoginController {
     public ResponseEntity<?> getUser(@RequestBody Map<String, String> json) {
         try {
             String s = userLoginService.checkUserLogin(json.get("email"), json.get("password"));
-            return ResponseEntity.ok(onboardingService.checkUser(s));
+            if (s.isEmpty())
+                return ResponseEntity.ok(getMessage("message","FAILURE"));
+            return ResponseEntity.ok(getMessage("message","" + onboardingService.checkUser(s)));
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("FAILURE");
+            return ResponseEntity.ok(getMessage("message","FAILURE"));
         }
     }
 
@@ -37,11 +40,16 @@ public class UserLoginController {
         try {
             return ResponseEntity.ok(userLoginService.addUser(user));
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("FAILURE");
+            return ResponseEntity.ok(getMessage("message","FAILURE"));
         }
     }
 
+    private static String getMessage(String key, String message) {
+        return String.format("{\"%s\":\"%s\"}", key, message);
+    }
+
     //Get all the users
+    @CrossOrigin
     @RequestMapping("/users")
     public List<UserLoginEntity> getAllUsers() {
         return userLoginService.getAllUsers();

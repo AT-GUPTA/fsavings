@@ -36,6 +36,7 @@ public class TransactionsController {
         }
     }
 
+    @CrossOrigin
     @RequestMapping(method = RequestMethod.GET, value = URI.USER_TRANSACTION)
     ResponseEntity<?> getAllTransactions(@PathVariable Long id) {
         try {

@@ -44,8 +44,8 @@ public class DashboardService {
 
             return json;
 
-        }catch (Exception e){
-            return null;
+        } catch (Exception e){
+            return new JSONObject().put("message", "FAILURE");
         }
 
     }
