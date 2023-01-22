@@ -43,20 +43,20 @@ public class GoalService {
             if ((isIncrease && subject.equalsIgnoreCase("saving")) ||
                     (!isIncrease && subject.equalsIgnoreCase("expense"))) {
                 totalExpectedIncome = expectedSavings + expectedExpenses;
-                expectedSavings = (expectedSavings / 10) + expectedSavings;
+                expectedSavings = (long)(expectedSavings / 10.0) + expectedSavings;
                 expectedExpenses = totalExpectedIncome - expectedSavings;
-                savingsPercentage = (expectedSavings / (expectedSavings + expectedExpenses)) * 100;
+                savingsPercentage = (long) (100.0*(expectedSavings / (expectedSavings + expectedExpenses)));
                 expensesPercentage = 100 - savingsPercentage;
-                wants = expensesPercentage * 5 / 14;
-                needs = expensesPercentage * 9 / 14;
+                wants = (long)(expensesPercentage * 5.0 / 14);
+                needs = (long)(expensesPercentage * 9.0 / 14);
             } else {
                 totalExpectedIncome = expectedSavings + expectedExpenses;
-                expectedExpenses = (expectedExpenses / 10) + expectedExpenses;
+                expectedExpenses = (long)(expectedExpenses / 10.0) + expectedExpenses;
                 expectedSavings = totalExpectedIncome - expectedExpenses;
-                expensesPercentage = (expectedExpenses / (expectedSavings + expectedExpenses)) * 100;
+                expensesPercentage = (long)(100.0*expectedExpenses / (expectedSavings + expectedExpenses));
                 savingsPercentage = 100 - expensesPercentage;
-                wants = expensesPercentage * 6 / 14;
-                needs = expensesPercentage * 8 / 14;
+                wants = (long)(expensesPercentage * 6.0 / 14);
+                needs = (long)(expensesPercentage * 8.0 / 14);
             }
 
             percentageTotal = wants + needs + savingsPercentage;
@@ -78,5 +78,9 @@ public class GoalService {
 
     public void saveGoal(GoalEntity goal) {
         goalDao.saveGoal(goal);
+    }
+
+    public GoalEntity getGoal(String userId) {
+        return goalDao.getGoal(userId);
     }
 }

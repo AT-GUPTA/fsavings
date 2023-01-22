@@ -44,4 +44,15 @@ public class GoalDao {
             LOGGER.info("GoalDao: saveGoal -- Error");
         }
     }
+
+    public GoalEntity getGoal(String userId) {
+        try{
+            return  entityManager.createQuery("SELECT goal from GoalEntity goal where goal.userId=:id", GoalEntity.class)
+                    .setParameter("id",userId)
+                    .getSingleResult();
+        }catch (Exception e) {
+            LOGGER.info("GoalDao: saveGoal -- Error");
+            return null;
+        }
+    }
 }

@@ -44,4 +44,25 @@ public class DashboardController {
         }
     }
     //cash flows
+    @RequestMapping(value = URI.GET_GOAL, method = RequestMethod.GET)
+    ResponseEntity<?> getGoals(@PathVariable String userId) {
+        try {
+            return ResponseEntity.ok(goalService.getGoal(userId));
+        } catch (Exception e) {
+            LOGGER.debug("DashboardController: getGoal -- Error");
+            return ResponseEntity.badRequest().body("FAILURE");
+        }
+    }
+
+    @RequestMapping(value = URI.GET_DASH_CONTENT, method = RequestMethod.GET)
+    ResponseEntity<?> getDashContent(@PathVariable String userId) {
+        try {
+            return ResponseEntity.ok(dashboardService.getDashContent(userId));
+        } catch (Exception e) {
+            LOGGER.debug("DashboardController: getGoal -- Error");
+            return ResponseEntity.badRequest().body("FAILURE");
+        }
+    }
+
+
 }
